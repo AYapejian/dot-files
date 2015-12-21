@@ -49,6 +49,9 @@ brew cask install \
 virtualbox \
 parallels-desktop \
 docker \
+docker-machine \
+docker-compose \
+kitematic \
 docker-machine-driver-parallels \
 vagrant \
 kaleidoscope \

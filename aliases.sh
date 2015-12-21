@@ -1,4 +1,13 @@
 ###############################################################################
+# SSH Aliases
+alias ssh.ara-dev.com='ssh ayapejian@ara-dev.com'
+alias ssh.ara-vps.com='ssh ayapejian@ara-vps.com'
+
+###############################################################################
+# Mac Specific Aliases
+alias mac.add-dock='defaults write com.apple.dock persistent-apps -array-add "{tile-data={}; tile-type=\"spacer-tile\";}"'
+
+###############################################################################
 # Server Aliases for Homebrew installed Mac Apps
 # Nginx
 alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
