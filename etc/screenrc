@@ -1,0 +1,35 @@
+# Tab bar
+hardstatus alwayslastline
+#hardstatus string "%{+b wk} %-w%{+b wk} %n %t %{-}%+w %41=%H @ %l %-= %= %D,%c:%s "
+#hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+hardstatus string '%{= kG}[ %{G}%H %{g}][%= %{= kw}%?%-Lw%?%{r}(%{W}%n*%f%t%?(%u)%?%{r})%{w}%?%+Lw%?%?%= %{g}][%{B} %d/%m %{W}%c %{g}]'
+
+# Define num of Scrollback lines
+defscrollback 20000
+
+# Programs opening by default
+chdir
+screen -t "Main" 0
+
+chdir ~/Dev
+screen -t "Dev" 1
+
+chdir ~/Dev
+screen -t "Other" 2
+
+chdir
+
+# Keys
+
+# COLORS! and some useful terminfo
+term xterm-256color
+
+# Make xterm scrolling work properly with screen.
+# TODO: This isn't working with screen
+termcapinfo xterm-color|xterm|xterms|xs|rxvt ti@:te@
+
+# Don't show Vim and other programs in scrollback after closed
+altscreen on
+
+# Do not show startup message
+startup_message off

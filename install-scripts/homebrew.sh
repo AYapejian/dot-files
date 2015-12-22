@@ -57,7 +57,8 @@ vagrant \
 kaleidoscope \
 ksdiff \
 sequel-pro \
-sublime-text3
+sublime-text3 \
+growlnotify
 
 # Mac Apps & Fonts
 brew cask install \

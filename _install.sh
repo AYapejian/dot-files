@@ -26,3 +26,6 @@ echo "=== Linked $dir/etc/editorconfig to ~/.editorconfig"
 
 ln -s $dir/etc/vimrc ~/.vimrc
 echo "=== Linked $dir/etc/vimrc to ~/.vimrc"
+
+ln -s $dir/etc/screenrc ~/.screenrc
+echo "=== Linked $dir/etc/screenrc to ~/.screenrc"
