@@ -29,3 +29,6 @@ echo "=== Linked $dir/etc/vimrc to ~/.vimrc"
 
 ln -s $dir/etc/tmux.conf ~/.tmux.conf
 echo "=== Linked $dir/etc/tmux.conf to ~/.tmux.conf"
+
+ln -s $dir/etc/screenrc ~/.screenrc
+echo "=== Linked $dir/etc/screenrc to ~/.screenrc"

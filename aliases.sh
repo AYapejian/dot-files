@@ -1,14 +1,19 @@
 ###############################################################################
-# SSH Aliases
-alias ssh.ara-dev.com='ssh ayapejian@ara-dev.com'
-alias ssh.ara-vps.com='ssh ayapejian@ara-vps.com'
+######### SSH Aliases
+###############################################################################
+alias ssh.ara-dev.com='ssh ara-dev.com'
+alias ssh.ara-vps.com='ssh ara-vps.com'
+alias ssh.massagebalance='ssh -i ~/.ssh/id_rsa_deshawns_godaddy massagebalance@107.180.20.71'
 
 ###############################################################################
 # Mac Specific Aliases
+###############################################################################
+# Add an empty space to mac dock
 alias mac.add-dock='defaults write com.apple.dock persistent-apps -array-add "{tile-data={}; tile-type=\"spacer-tile\";}"'
 
 ###############################################################################
 # Server Aliases for Homebrew installed Mac Apps
+###############################################################################
 # Nginx
 alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'

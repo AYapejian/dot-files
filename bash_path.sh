@@ -1,3 +1,4 @@
+# Common exec paths
 [[ -d /usr/local/sbin ]] && export PATH="/usr/local/sbin:$PATH"
 [[ -d /usr/local/bin ]] && export PATH="/usr/local/bin:$PATH"
 [[ -d /opt/local/sbin ]] && export PATH="/opt/local/sbin:$PATH"
