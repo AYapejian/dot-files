@@ -1,0 +1,1 @@
+Put bash files that will change from host to host here.  All files in this folder should not be synced to git.

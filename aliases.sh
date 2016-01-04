@@ -21,3 +21,6 @@ alias nginx.logs.default.access='tail -250f /usr/local/etc/nginx/logs/default.ac
 alias mysql.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
 alias mysql.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
 alias mysql.restart='mysql.stop && mysql.start'
+
+# mac
+alias subl="'/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'"
