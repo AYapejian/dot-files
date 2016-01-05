@@ -8,6 +8,7 @@
 #
 # Based on https://github.com/afeld/dotfiles/blob/master/init.sh
 
+CURRENT_DIR=${PWD##*/}
 # Die on failures
 set -e
 
@@ -15,20 +16,20 @@ set -e
 # Configs
 ###########################################################
 # git
-ln -s $dir/etc/gitignore_global ~/.gitignore
-echo "=== Linked $dir/etc/gitignore_global to ~/.gitignore"
+ln -sf $CURRENT_DIR/etc/gitignore_global ~/.gitignore
+echo "=== Linked $CURRENT_DIR/etc/gitignore_global to ~/.gitignore"
 
-ln -s $dir/etc/gitconfig_global ~/.gitconfig
-echo "=== Linked $dir/etc/gitconfig_global to ~/.gitconfig"
+ln -sf $CURRENT_DIR/etc/gitconfig_global ~/.gitconfig
+echo "=== Linked $CURRENT_DIR/etc/gitconfig_global to ~/.gitconfig"
 
-ln -s $dir/etc/editorconfig ~/.editorconfig
-echo "=== Linked $dir/etc/editorconfig to ~/.editorconfig"
+ln -sf $CURRENT_DIR/etc/editorconfig ~/.editorconfig
+echo "=== Linked $CURRENT_DIR/etc/editorconfig to ~/.editorconfig"
 
-ln -s $dir/etc/vimrc ~/.vimrc
-echo "=== Linked $dir/etc/vimrc to ~/.vimrc"
+ln -sf $CURRENT_DIR/etc/vimrc ~/.vimrc
+echo "=== Linked $CURRENT_DIR/etc/vimrc to ~/.vimrc"
 
-ln -s $dir/etc/tmux.conf ~/.tmux.conf
-echo "=== Linked $dir/etc/tmux.conf to ~/.tmux.conf"
+ln -sf $CURRENT_DIR/etc/tmux.conf ~/.tmux.conf
+echo "=== Linked $CURRENT_DIR/etc/tmux.conf to ~/.tmux.conf"
 
-ln -s $dir/etc/screenrc ~/.screenrc
-echo "=== Linked $dir/etc/screenrc to ~/.screenrc"
+ln -sf $CURRENT_DIR/etc/screenrc ~/.screenrc
+echo "=== Linked $CURRENT_DIR/etc/screenrc to ~/.screenrc"

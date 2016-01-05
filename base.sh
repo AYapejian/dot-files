@@ -11,4 +11,4 @@ source $DF_BASE_PATH/node_env.sh
 ########################
 ### HOST SPECIFIC    ###
 ########################
-source $DF_BASE_PATH/host-specific/host_specific_shell_opts.sh
+#source $DF_BASE_PATH/host-specific/host_specific_shell_opts.sh
