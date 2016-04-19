@@ -1,8 +1,5 @@
-[user]
-	email = ayapejian@gmail.com
-	name = Ara Yapejian
 [core]
-	excludesfile = ~/.gitignore
+	excludesfile = /Users/ayapejian/.gitignore
 	editor = vim
 	filemode = false
 	autocrlf = input
@@ -10,23 +7,84 @@
 	ignorecase = false
 [color]
 	ui = true
+[mergetool "Kaleidoscope"]
+    cmd = ksdiff --merge --output \"$MERGED\" --base \"$BASE\" -- \"$LOCAL\" --snapshot \"$REMOTE\" --snapshot
+    trustexitcode = true
 [merge]
-	conflictstyle = diff3
-	keepBackup = false
-	tool = custom
+    tool = Kaleidoscope
+[difftool "Kaleidoscope"]
+    cmd = ksdiff --partial-changeset --relative-path \"$MERGED\" -- \"$LOCAL\" \"$REMOTE\"
+[difftool]
+    prompt = false
+[mergetool]
+    prompt = false
+[diff]
+        tool = Kaleidoscope
 [github]
 	user = ayapejian
 [alias]
-	bclean = clean-branches
-	branches = latest-branches
-	latest = latest-tag
-	lbclean = clean-local-branches
-	lg = pretty-log
-	mw = merge-no-whitespace
-	um = checkout-upstream-primary
-	co = checkout
-	pr = create-pull-request
-	feature = create-feature-branch
+    ## ################# When in doubt ################# ##
+    # List Git aliases
+        la = "!git config -l | grep alias | cut -c 7-"
+
+    ## ################### The Basics ################## ##
+	# Edit Git Config
+    	ec = config --global -e
+    # Checkout Branch
+    	cob = checkout -b
+	# Add and commit with message 'git cm "some feature comment"'
+    	cm = !git add -A && git commit -m
+    # Interactively rebase all the commits on the current branch
+        rebase-branch = "!git rebase -i `git merge-base master HEAD`"
+
+    ## ################### Branches #################### ##
+    # Get Current branch name (used in other aliases)
+        branch-name = "!git rev-parse --abbrev-ref HEAD"
+    # Push the current branch to the remote "origin", and set it to track the upstream branch
+        publish = "!git push -u origin $(git branch-name)"
+    # Delete the remote version of the current branch
+        unpublish = "!git push origin :$(git branch-name)"
+    # Clean up already merged branches
+          delete-merged-branches = "!f() { git checkout --quiet master && git branch --merged | grep --invert-match '\\*' | xargs -n 1 git branch --delete; git checkout --quiet @{-1}; }; f"
+
+	## ################## Log and History ############## ##
+	# Log One Line Pretty Print
+    	l = log --pretty=format:"%C(yellow)%h\\ %ad%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --date=short
+    # Git Log -
+    	ll = log --pretty=format:"%C(yellow)%h%Cred%d\\ %Creset%s%Cblue\\ [%cn]" --decorate --numstat
+    # Git Log Graph - More Info (and oh so pretty!)
+    	lg = log --graph --oneline --all --topo-order --abbrev-commit --date=relative --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %C(bold blue)<%an>%Creset'
+    # File Level Changes
+        filelog = log -u
+        fl = log -u
+    # Modified files in last commit
+        dl = "!git ll -1"
+
+    ## ################### The Stash ################### ##
+        stash-list = stash list --pretty=format:'%Cblue%gd%Cred: %C(yellow)%s'
+
+    ## ###################### Diffing ################## ##
+    # Diff tool to review your current changes
+        code-review = difftool origin/master...
+    # Diff Last Commit
+        dlc = diff --cached HEAD^
+    # Show last tag
+        lasttag = describe --tags --abbrev=0
+
+    ## ############## File and Text Search ############# ##
+    # Find files in codebase (not ignored files) Example: `git f index.js`
+        find-file = "!git ls-files | grep -i"
+        ff = "!git ls-files | grep -i"
+    # Search for strings (Skip binaries, Ignore case, new line between files, line on top)
+        grep = grep -Ii
+        gr = grep -Ii --break --line-number
+
+    ## #################### Crap!!! #################### ##
+    # Reset previous commit, but keep those changes in working directory
+    	undo = reset HEAD~1 --mixed
+    # Hard reset but first add/commit all changes, then resets to remove commit, still there if needed
+    	wipe = !git add -A && git commit -qm 'WIPE SAVEPOINT' && git reset HEAD~1 --hard
+
 [branch]
 	autosetupmerge = true
 [push]
@@ -42,3 +100,12 @@
 	required = true
 	clean = git media clean %f
 	smudge = git media smudge %f
+[user]
+	email = ayapejian@hapinnovations.com
+	name = Ara Yapejian
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/SourceTree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

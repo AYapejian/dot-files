@@ -1,15 +1,41 @@
 ###############################################################################
-######### SSH Aliases
+# Common Aliases
 ###############################################################################
-alias ssh.ara-dev.com='ssh ara-dev.com'
-alias ssh.ara-vps.com='ssh ara-vps.com'
-alias ssh.massagebalance='ssh -i ~/.ssh/id_rsa_deshawns_godaddy massagebalance@107.180.20.71'
+alias ls='ls -GpFh'
+alias ll='ls -al'
+
+alias top='htop'
+
+alias df='df -H'
+alias du='du -ch'
+alias du.total='du -ch | grep total'
+
+alias mount.column='mount | column -t'
+
+alias grep='grep --color'
+
+# Support resume by default
+alias wget='wget -c'
+
+# Start a Quick Web Server
+alias start.webserver='python -m SimpleHTTPServer 9000'
+
+###############################################################################
+# Networking Aliases
+###############################################################################
+# Mac only
+# alias network.ports.all='sudo lsof -a -n -i'
+alias network.ports.open='sudo lsof -a -n -i | grep LISTEN'
+# Flush dns  cache
+alias network.flush.dns='sudo dscacheutil -flushcache; sudo killall -HUP mDNSResponder'
+# Get your current public IP
+alias network.wan.ip='curl icanhazip.com'
 
 ###############################################################################
 # Mac Specific Aliases
 ###############################################################################
 # Add an empty space to mac dock
-alias mac.add-dock='defaults write com.apple.dock persistent-apps -array-add "{tile-data={}; tile-type=\"spacer-tile\";}"'
+alias mac.add-dock-spacer="defaults write com.apple.dock persistent-apps -array-add '{tile-data={}; tile-type="spacer-tile";}' && killall Dock"
 
 ###############################################################################
 # Server Aliases for Homebrew installed Mac Apps
@@ -18,14 +44,18 @@ alias mac.add-dock='defaults write com.apple.dock persistent-apps -array-add "{t
 alias nginx.start='sudo launchctl load /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.stop='sudo launchctl unload /Library/LaunchDaemons/homebrew.mxcl.nginx.plist'
 alias nginx.restart='nginx.stop && nginx.start'
-# Nginx Logs
-alias nginx.logs.error='tail -250f /usr/local/etc/nginx/logs/error.log'
-alias nginx.logs.access='tail -250f /usr/local/etc/nginx/logs/access.log'
-alias nginx.logs.default.access='tail -250f /usr/local/etc/nginx/logs/default.access.log'
-# Mysql
-alias mysql.start="launchctl load -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias mysql.stop="launchctl unload -w ~/Library/LaunchAgents/homebrew.mxcl.mysql.plist"
-alias mysql.restart='mysql.stop && mysql.start'
 
-# mac
-alias subl="'/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'"
+###############################################################################
+# Docker Aliases
+###############################################################################
+# Docker-Compose
+alias dc="docker-compose"
+alias db="docker build --rm=true"
+
+# Clean up Docker
+alias docker.rm.containers='docker rm -v $(docker ps -a -q -f status=exited)' # Remove containers that are exited
+alias docker.rm.images='docker rmi $(docker images -f "dangling=true" -q)' # Remove all cahced but unused images
+
+# OTHER
+alias dev.todos="ack -n --nogroup '(TODO|FIX(ME)?):' -R *"
+# alias subl='/Applications/Sublime\ Text.app/Contents/SharedSupport/bin/subl'

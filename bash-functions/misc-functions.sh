@@ -1,0 +1,1 @@
+growl() { eval growlnotify -a iTerm.app --message $1 --name "Bash\ Terminal"; return ; }

@@ -1,16 +1,15 @@
 #!/bin/sh
 #
-# install.sh
-#
-# Sets up a very opinionated development system and included .dotfiles. This should only
-# be run during an initial system setup after a fresh OSX install, and not on a system
-# that has already been customized, or it may break some of the packages installed.
-#
-# Based on https://github.com/afeld/dotfiles/blob/master/init.sh
+# Install simply symlinks the configuration files from `<CLONE ROOT>/etc` 
+# to `$HOME/<.filename>`. 
+# #######################################################################
+# NOTE: MANUALLY RUN IF YOU HAVE SOME IN PLACE ALREADY
+# #######################################################################
+
+# Die on failures
+set -e 
 
 CURRENT_DIR=${PWD##*/}
-# Die on failures
-set -e
 
 ###########################################################
 # Configs

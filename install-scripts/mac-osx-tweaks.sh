@@ -37,9 +37,13 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 defaults write NSGlobalDomain WebKitDeveloperExtras -bool true
 # Show the ~/Library folder
 chflags nohidden ~/Library
-# Show absolute path in finder's title bar. 
+# Show absolute path in finder's title bar.
 defaults write com.apple.finder _FXShowPosixPathInTitle -bool YES
 # Auto-play videos when opened with QuickTime Player
-defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen 1
+# defaults write com.apple.QuickTimePlayerX MGPlayMovieOnOpen 1
 # Enable AirDrop over Ethernet and on unsupported Macs
 defaults write com.apple.NetworkBrowser BrowseAllInterfaces -bool true
+
+# Finder show hidden files 
+defaults write com.apple.finder AppleShowAllFiles TRUE
+killall Finder
